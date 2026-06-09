@@ -171,4 +171,7 @@ with gr.Blocks(title="CreditScore AI 💳", theme=gr.themes.Soft()) as demo:
     )
 
 if __name__ == "__main__":
-    demo.launch(share=False, server_port=7860, inbrowser=True)
+    server_name = os.getenv("GRADIO_SERVER_NAME", "0.0.0.0")
+    server_port = int(os.getenv("PORT", os.getenv("GRADIO_SERVER_PORT", "7860")))
+    inbrowser = os.getenv("GRADIO_INBROWSER", "false").lower() == "true"
+    demo.launch(share=False, server_name=server_name, server_port=server_port, inbrowser=inbrowser)

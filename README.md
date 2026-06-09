@@ -73,7 +73,25 @@ jupyter notebook Modelo.ipynb
 python app/app.py
 ```
 
-La app abre automáticamente en `http://127.0.0.1:7860`
+La app queda disponible en `http://127.0.0.1:7860` (o en el puerto definido por `PORT`/`GRADIO_SERVER_PORT`).
+
+## Despliegue gratuito
+
+### Opción recomendada: Hugging Face Spaces (Gradio)
+
+Esta app está hecha con Gradio y se puede desplegar gratis en CPU en Hugging Face Spaces.
+
+1. Crea un Space nuevo con **SDK = Gradio**.
+2. Sube el contenido del repositorio (incluyendo `app/best_model.pt`, `app/preprocessor.pkl` y `app/meta.pkl`).
+3. Configura el archivo principal como `app/app.py`.
+4. Hugging Face instalará `requirements.txt` y levantará la app automáticamente.
+
+> Nota: el `app.py` ya está preparado para leer `PORT`/`GRADIO_SERVER_PORT` y ejecutar en entornos cloud sin abrir navegador local.
+
+### Alternativas gratuitas
+
+- **Render / Railway**: válidas para apps Python, con posibles límites más agresivos de inactividad.
+- **Vercel**: no recomendado para esta app, porque está orientado a serverless/frontend y Gradio suele funcionar mejor con procesos Python persistentes.
 
 ## Dependencias principales
 
